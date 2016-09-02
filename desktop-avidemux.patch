@@ -1,0 +1,11 @@
+--- avidemux2.desktop	2016-08-18 00:36:54.000000000 -0600
++++ avidemux2-qt.desktop	2016-09-01 11:53:53.830491787 -0600
+@@ -3,7 +3,7 @@
+ Name=avidemux2
+ GenericName=Video Editor
+ Comment=Multiplatform video editor
+-Exec=avidemux2_gtk
++Exec=avidemux3_qt5
+ MimeType=video/mpeg;video/quicktime;video/x-msvideo;video/x-anim;audio/x-mp3;audio/x-mp2;
+ Icon=avidemux
+ Terminal=false
