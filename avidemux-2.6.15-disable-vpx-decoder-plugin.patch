@@ -1,0 +1,7 @@
+diff --git a/avidemux_plugins/ADM_videoDecoder/CMakeLists.txt b/avidemux_plugins/ADM_videoDecoder/CMakeLists.txt
+index 9586aff..e953354 100644
+--- a/avidemux_plugins/ADM_videoDecoder/CMakeLists.txt
++++ b/avidemux_plugins/ADM_videoDecoder/CMakeLists.txt
+@@ -1 +1 @@
+-ADD_SUBDIRECTORY(vpx)
++#ADD_SUBDIRECTORY(vpx)
