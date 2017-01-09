@@ -9,7 +9,7 @@ Summary:        Graphical video editing and transcoding tool
 License:        GPLv2+
 URL:            http://www.avidemux.org
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}_%{version}.tar.gz
-Patch:		desktop-avidemux.patch
+Patch:		      https://raw.githubusercontent.com/UnitedRPMs/avidemux/master/desktop-avidemux.patch
 
 
 # qt
