@@ -9,7 +9,7 @@ Summary:        Graphical video editing and transcoding tool
 License:        GPLv2+
 URL:            http://www.avidemux.org
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}_%{version}.tar.gz
-Patch:		      https://raw.githubusercontent.com/UnitedRPMs/avidemux/master/desktop-avidemux.patch
+Patch:          https://raw.githubusercontent.com/UnitedRPMs/avidemux/master/desktop-avidemux.patch
 
 
 # qt
@@ -191,11 +191,16 @@ find %{buildroot}%{_libdir} -type f -name "*.so.*" -exec chmod 0755 {} \;
 # Catch the stuff missed using install_manifest.txt
 %dir %{_libdir}/ADM_plugins6
 %dir %{_libdir}/ADM_plugins6/*
+
+
+%if 0%{?fedora} <= 25
 %{_libdir}/ADM_plugins6/autoScripts/*.pyc
 %{_libdir}/ADM_plugins6/autoScripts/*.pyo
-%dir %{_libdir}/ADM_plugins6/autoScripts/lib
 %{_libdir}/ADM_plugins6/autoScripts/lib/*.pyc
 %{_libdir}/ADM_plugins6/autoScripts/lib/*.pyo
+%endif
+%dir %{_libdir}/ADM_plugins6/autoScripts/lib
+
 
 %files cli -f buildPluginsCLI/install_manifest.txt
 %{_bindir}/avidemux3_cli
