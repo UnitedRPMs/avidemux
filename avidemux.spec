@@ -1,4 +1,3 @@
-%global _pkgbuilddir %{_builddir}/%{name}_%{version}
 %global _iconsdir %{_datadir}/icons
 %bcond_without aften
 
@@ -71,11 +70,8 @@ BuildRequires:  opencore-amr-devel
 BuildRequires:  libvpx-devel
 BuildRequires:  twolame-devel
 %if %{with aften}
-%ifarch %{ix86} x86_64
 BuildRequires:	aften-devel
 %endif
-%endif
-
 
 # Video Codecs
 BuildRequires:  xvidcore-devel >= 1.0.2
@@ -142,8 +138,6 @@ Header files for %{name}.
 
 %prep
 %setup -n %{name}_%{version}
-
-# cp -f %{S:2} %{_builddir}/%{name}_%{version}/cmake/Ts.cmake
 
 for i in bash cmake cpp sh sql txt; do
   find . -name \*.$i -print0 | xargs -0 dos2unix -q
