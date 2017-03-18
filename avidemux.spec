@@ -3,7 +3,7 @@
 
 Name:           avidemux
 Version:        2.6.18
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Graphical video editing and transcoding tool
 
 License:        GPLv2+
@@ -192,15 +192,11 @@ find %{buildroot}%{_libdir} -type f -name "*.so.*" -exec chmod 0755 {} \;
 %dir %{_libdir}/ADM_plugins6
 %dir %{_libdir}/ADM_plugins6/*
 
-
-%if 0%{?fedora} <= 25
 %{_libdir}/ADM_plugins6/autoScripts/*.pyc
 %{_libdir}/ADM_plugins6/autoScripts/*.pyo
 %{_libdir}/ADM_plugins6/autoScripts/lib/*.pyc
 %{_libdir}/ADM_plugins6/autoScripts/lib/*.pyo
-%endif
 %dir %{_libdir}/ADM_plugins6/autoScripts/lib
-
 
 %files cli -f buildPluginsCLI/install_manifest.txt
 %{_bindir}/avidemux3_cli
@@ -230,6 +226,9 @@ find %{buildroot}%{_libdir} -type f -name "*.so.*" -exec chmod 0755 {} \;
 
 
 %changelog
+
+* Fri Mar 17 2017 David Vásquez <davidjeremias82 AT gmail DOT com> - 2.6.18-2
+- Included missed files
 
 * Mon Jan 09 2017 David Vásquez <davidjeremias82 AT gmail DOT com> - 2.6.18-1
 - Updated to 2.6.18

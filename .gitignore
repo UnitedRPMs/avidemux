@@ -1,2 +1,7 @@
-avidemux_2.6.10.tar.gz
+BUILD/*
+BUILDROOT/*
+RPMS/*
+SPECS/*
+SRPMS/*
+avidemux*.gz
 /avidemux_2.6.12.tar.gz
