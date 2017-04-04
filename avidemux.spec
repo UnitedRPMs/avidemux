@@ -192,10 +192,8 @@ find %{buildroot}%{_libdir} -type f -name "*.so.*" -exec chmod 0755 {} \;
 %dir %{_libdir}/ADM_plugins6
 %dir %{_libdir}/ADM_plugins6/*
 
-%{_libdir}/ADM_plugins6/autoScripts/*.pyc
-%{_libdir}/ADM_plugins6/autoScripts/*.pyo
-%{_libdir}/ADM_plugins6/autoScripts/lib/*.pyc
-%{_libdir}/ADM_plugins6/autoScripts/lib/*.pyo
+%{_libdir}/ADM_plugins6/autoScripts/*.py
+%{_libdir}/ADM_plugins6/autoScripts/lib/*.py
 %dir %{_libdir}/ADM_plugins6/autoScripts/lib
 
 %files cli -f buildPluginsCLI/install_manifest.txt
