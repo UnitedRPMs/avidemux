@@ -189,12 +189,7 @@ find %{buildroot}%{_libdir} -type f -name "*.so.*" -exec chmod 0755 {} \;
 %exclude %{_libdir}/libADM_render*
 %exclude %{_libdir}/libADM_UI*
 # Catch the stuff missed using install_manifest.txt
-%dir %{_libdir}/ADM_plugins6
-%dir %{_libdir}/ADM_plugins6/*
-
-%{_libdir}/ADM_plugins6/autoScripts/*.py
-%{_libdir}/ADM_plugins6/autoScripts/lib/*.py
-%dir %{_libdir}/ADM_plugins6/autoScripts/lib
+#{_libdir}/ADM_plugins6/autoScripts/
 
 %files cli -f buildPluginsCLI/install_manifest.txt
 %{_bindir}/avidemux3_cli
