@@ -2,7 +2,7 @@
 %bcond_without aften
 
 Name:           avidemux
-Version:        2.6.19
+Version:        2.6.21
 Release:        2%{?dist}
 Summary:        Graphical video editing and transcoding tool
 
@@ -219,6 +219,9 @@ find %{buildroot}%{_libdir} -type f -name "*.so.*" -exec chmod 0755 {} \;
 
 
 %changelog
+
+* Thu May 25 2017 David Vásquez <davidjeremias82 AT gmail DOT com> - 2.6.21-2
+- Updated to 2.6.21-2
 
 * Tue Apr 04 2017 David Vásquez <davidjeremias82 AT gmail DOT com> - 2.6.19-2
 - Updated to 2.6.19-2
