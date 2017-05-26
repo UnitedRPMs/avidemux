@@ -1,15 +1,19 @@
 %global _iconsdir %{_datadir}/icons
 %bcond_without aften
+%global gitdate 20170525
+%global commit0 91b8d8eb69de6f5f31f99a609a29f569f004a6e9
+%global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
+%global gver .%{gitdate}git%{shortcommit0}
 
 Name:           avidemux
-Version:        2.6.21
-Release:        2%{?dist}
+Version:        2.6.20
+Release:        2%{?gver}%{?dist}
 Summary:        Graphical video editing and transcoding tool
 
 License:        GPLv2+
 URL:            http://www.avidemux.org
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}_%{version}.tar.gz
-Patch:          https://raw.githubusercontent.com/UnitedRPMs/avidemux/master/desktop-avidemux.patch
+Source0:	https://github.com/mean00/avidemux2/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
+Patch:          desktop-avidemux.patch
 
 
 # qt
@@ -137,15 +141,11 @@ Header files for %{name}.
 
 
 %prep
-%setup -n %{name}_%{version}
+%autosetup -n %{name}-%{commit0} -p0
 
 for i in bash cmake cpp sh sql txt; do
   find . -name \*.$i -print0 | xargs -0 dos2unix -q
 done
-
-
-%patch -p0
-
 
 %build
 export CXXFLAGS="%optflags -D__STDC_CONSTANT_MACROS -fno-strict-aliasing"
@@ -220,8 +220,8 @@ find %{buildroot}%{_libdir} -type f -name "*.so.*" -exec chmod 0755 {} \;
 
 %changelog
 
-* Thu May 25 2017 David Vásquez <davidjeremias82 AT gmail DOT com> - 2.6.21-2
-- Updated to 2.6.21-2
+* Thu May 25 2017 David Vásquez <davidjeremias82 AT gmail DOT com> - 2.6.20-2.git91b8d8e
+- Updated to 2.6.20-2.git91b8d8e
 
 * Tue Apr 04 2017 David Vásquez <davidjeremias82 AT gmail DOT com> - 2.6.19-2
 - Updated to 2.6.19-2
