@@ -141,7 +141,7 @@ Header files for %{name}.
 
 
 %prep
-%autosetup -n %{name}-%{commit0} -p0
+%autosetup -n %{name}2-%{commit0} -p0
 
 for i in bash cmake cpp sh sql txt; do
   find . -name \*.$i -print0 | xargs -0 dos2unix -q
