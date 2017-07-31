@@ -1,9 +1,9 @@
 %global _iconsdir %{_datadir}/icons
 %bcond_without aften
-%global gitdate 20170525
-%global commit0 91b8d8eb69de6f5f31f99a609a29f569f004a6e9
+%global gitdate 20170731
+%global commit0 46b6b0212a5571d40dfb03f9d341fea73ce3edc3
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
-%global gver .%{gitdate}git%{shortcommit0}
+%global gver .git%{shortcommit0}
 
 Name:           avidemux
 Version:        2.6.20
@@ -14,7 +14,6 @@ License:        GPLv2+
 URL:            http://www.avidemux.org
 Source0:	https://github.com/mean00/avidemux2/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
 Patch:          desktop-avidemux.patch
-
 
 # qt
 BuildRequires:	pkgconfig(Qt5Core)
@@ -219,6 +218,10 @@ find %{buildroot}%{_libdir} -type f -name "*.so.*" -exec chmod 0755 {} \;
 
 
 %changelog
+
+* Thu May 25 2017 David Vásquez <davidjeremias82 AT gmail DOT com> - 2.6.20-3.git46b6b02
+- Updated to 2.6.20-3.git46b6b02
+- Fix build with cmake 3.9.0
 
 * Thu May 25 2017 David Vásquez <davidjeremias82 AT gmail DOT com> - 2.6.20-2.git91b8d8e
 - Updated to 2.6.20-2.git91b8d8e
