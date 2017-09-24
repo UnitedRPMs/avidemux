@@ -1,13 +1,13 @@
 %global _iconsdir %{_datadir}/icons
 %bcond_without aften
-%global gitdate 20170731
-%global commit0 46b6b0212a5571d40dfb03f9d341fea73ce3edc3
+%global gitdate 20170923
+%global commit0 4865a8aaa1a31902736d151d4ce0b0e2131bc425
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 %global gver .git%{shortcommit0}
 
 Name:           avidemux
-Version:        2.6.20
-Release:        2%{?gver}%{?dist}
+Version:        2.7.0
+Release:        1%{?gver}%{?dist}
 Summary:        Graphical video editing and transcoding tool
 
 License:        GPLv2+
@@ -218,6 +218,9 @@ find %{buildroot}%{_libdir} -type f -name "*.so.*" -exec chmod 0755 {} \;
 
 
 %changelog
+
+* Sat Sep 23 2017 David Vásquez <davidjeremias82 AT gmail DOT com> - 2.7.0-1.git4865a8a
+- Updated to 2.7.0-1.git4865a8a
 
 * Thu May 25 2017 David Vásquez <davidjeremias82 AT gmail DOT com> - 2.6.20-3.git46b6b02
 - Updated to 2.6.20-3.git46b6b02
