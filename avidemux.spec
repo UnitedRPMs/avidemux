@@ -7,7 +7,7 @@
 
 Name:           avidemux
 Version:        2.7.0
-Release:        2%{?gver}%{?dist}
+Release:        3%{?gver}%{?dist}
 Summary:        Graphical video editing and transcoding tool
 
 License:        GPLv2+
@@ -218,6 +218,9 @@ find %{buildroot}%{_libdir} -type f -name "*.so.*" -exec chmod 0755 {} \;
 
 
 %changelog
+
+* Sat Sep 30 2017 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.7.0-3.git4865a8a  
+- Automatic Mass Rebuild
 
 * Thu Sep 28 2017 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.7.0-2.git4865a8a  
 - Automatic Mass Rebuild
