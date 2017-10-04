@@ -14,6 +14,10 @@ License:        GPLv2+
 URL:            http://www.avidemux.org
 Source0:	https://github.com/mean00/avidemux2/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
 Patch:          desktop-avidemux.patch
+# Fix compilation with glibc >= 2.27, Thanks to eumagga0x2a
+%if 0%{?fedora} >= 28
+Patch1:		avidemux-pow10f.patch
+%endif		
 
 # qt
 BuildRequires:	pkgconfig(Qt5Core)
@@ -140,7 +144,7 @@ Header files for %{name}.
 
 
 %prep
-%autosetup -n %{name}2-%{commit0} -p0
+%autosetup -n %{name}2-%{commit0} -p1
 
 for i in bash cmake cpp sh sql txt; do
   find . -name \*.$i -print0 | xargs -0 dos2unix -q
