@@ -79,10 +79,7 @@ BuildRequires:	aften-devel
 # Video Codecs
 BuildRequires:  xvidcore-devel >= 1.0.2
 BuildRequires:  x264-devel
-BuildRequires:  x265-devel
-
-# clang
-BuildRequires: clang 
+BuildRequires:  x265-devel 
 
 # Main package is a metapackage, bring in something useful.
 Requires:       %{name}-gui = %{version}-%{release}
@@ -158,7 +155,6 @@ chmod 755 bootStrap.bash
 bash bootStrap.bash \
      --with-core \
      --with-cli  \
-     --with-clang \
      --with-plugins
 
 %install
@@ -227,7 +223,6 @@ find %{buildroot}%{_libdir} -type f -name "*.so.*" -exec chmod 0755 {} \;
 
 * Mon Jan 29 2018 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.7.0-7.gitca14f0b
 - Updated to current commit
-- Changed to clang
 
 * Tue Jan 16 2018 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.7.0-6.git4865a8a  
 - Rebuilt for libva 2.0
