@@ -1,13 +1,13 @@
 %global _iconsdir %{_datadir}/icons
 %bcond_without aften
-%global gitdate 20170923
-%global commit0 4865a8aaa1a31902736d151d4ce0b0e2131bc425
+%global gitdate 20180129
+%global commit0 ca14f0bb529275528c8adc56eab8650e44e443f0
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 %global gver .git%{shortcommit0}
 
 Name:           avidemux
 Version:        2.7.0
-Release:        6%{?gver}%{?dist}
+Release:        7%{?gver}%{?dist}
 Summary:        Graphical video editing and transcoding tool
 
 License:        GPLv2+
@@ -85,6 +85,9 @@ BuildRequires:  xvidcore-devel >= 1.0.2
 BuildRequires:  x264-devel
 BuildRequires:  x265-devel
 
+# clang
+BuildRequires: clang 
+
 # Main package is a metapackage, bring in something useful.
 Requires:       %{name}-gui = %{version}-%{release}
 
@@ -150,6 +153,8 @@ for i in bash cmake cpp sh sql txt; do
   find . -name \*.$i -print0 | xargs -0 dos2unix -q
 done
 
+sed -i 's|../avidemux/qt4|../avidemux/qt4 -DLRELEASE_EXECUTABLE=/usr/bin/lrelease-qt5|' bootStrap.bash
+
 %build
 export CXXFLAGS="%optflags -D__STDC_CONSTANT_MACROS -fno-strict-aliasing"
 chmod 755 bootStrap.bash
@@ -157,6 +162,7 @@ chmod 755 bootStrap.bash
 bash bootStrap.bash \
      --with-core \
      --with-cli  \
+     --with-clang \
      --with-plugins
 
 %install
@@ -222,6 +228,10 @@ find %{buildroot}%{_libdir} -type f -name "*.so.*" -exec chmod 0755 {} \;
 
 
 %changelog
+
+* Mon Jan 29 2018 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.7.0-7.gitca14f0b
+- Updated to current commit
+- Changed to clang
 
 * Tue Jan 16 2018 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.7.0-6.git4865a8a  
 - Rebuilt for libva 2.0
