@@ -1,13 +1,13 @@
 %global _iconsdir %{_datadir}/icons
 %bcond_without aften
-%global gitdate 20180129
-%global commit0 ca14f0bb529275528c8adc56eab8650e44e443f0
+%global gitdate 20180606
+%global commit0 d667da3590beb32cb35d8938e0b2ea186d921c85
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 %global gver .git%{shortcommit0}
 
 Name:           avidemux
-Version:        2.7.0
-Release:        8%{?gver}%{?dist}
+Version:        2.7.1
+Release:        7%{?gver}%{?dist}
 Summary:        Graphical video editing and transcoding tool
 
 License:        GPLv2+
@@ -220,6 +220,9 @@ find %{buildroot}%{_libdir} -type f -name "*.so.*" -exec chmod 0755 {} \;
 
 
 %changelog
+
+* Wed Jun 06 2018 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.7.1-8.gitd667da3  
+- Updated to 2.7.1-8.gitd667da3
 
 * Sun May 27 2018 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.7.0-8.gitca14f0b  
 - Automatic Mass Rebuild
