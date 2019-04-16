@@ -36,6 +36,9 @@ BuildRequires:	chrpath
 BuildRequires:	ImageMagick-devel
 BuildRequires:	libxslt-devel
 BuildRequires:	dos2unix
+%if 0%{?fedora} >= 29
+BuildRequires:	python-unversioned-command
+%endif
 
 # Libraries
 BuildRequires:  yasm-devel
@@ -187,7 +190,9 @@ find %{buildroot}%{_libdir} -type f -name "*.so.*" -exec chmod 0755 {} \;
 %exclude %{_libdir}/libADM_render*
 %exclude %{_libdir}/libADM_UI*
 # Catch the stuff missed using install_manifest.txt
-#%{_libdir}/ADM_plugins6/autoScripts/
+%if 0%{?fedora} <= 29
+%{_libdir}/ADM_plugins6/autoScripts/
+%endif
 
 %files cli -f buildPluginsCLI/install_manifest.txt
 %{_bindir}/avidemux3_cli
