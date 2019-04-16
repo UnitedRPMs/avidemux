@@ -24,6 +24,7 @@ BuildRequires:	qt5-qtbase-devel
 BuildRequires:  cmake(Qt5LinguistTools)
 
 # Utilities
+BuildRequires:	make
 BuildRequires:  cmake
 BuildRequires:  gettext intltool
 BuildRequires:  libxslt
