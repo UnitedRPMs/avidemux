@@ -160,9 +160,6 @@ bash bootStrap.bash \
 %install
 cp -a install/* %{buildroot}
 mkdir -p %{buildroot}%{_datadir}/applications
-install -D avidemux2.desktop %{buildroot}%{_datadir}/applications/%{name}-qt.desktop
-mkdir -p %{buildroot}%{_iconsdir}
-convert avidemux_icon.png -resize 32x32 %{buildroot}%{_iconsdir}/%{name}-qt.png
 
 mkdir -p %{buildroot}%{_mandir}/man1
 install -m 644 man/avidemux.1 %{buildroot}%{_mandir}/man1
@@ -190,7 +187,7 @@ find %{buildroot}%{_libdir} -type f -name "*.so.*" -exec chmod 0755 {} \;
 %exclude %{_libdir}/libADM_render*
 %exclude %{_libdir}/libADM_UI*
 # Catch the stuff missed using install_manifest.txt
-%{_libdir}/ADM_plugins6/autoScripts/
+#%{_libdir}/ADM_plugins6/autoScripts/
 
 %files cli -f buildPluginsCLI/install_manifest.txt
 %{_bindir}/avidemux3_cli
@@ -202,9 +199,10 @@ find %{buildroot}%{_libdir} -type f -name "*.so.*" -exec chmod 0755 {} \;
 %{_bindir}/avidemux3_jobs_qt5
 %{_libdir}/libADM_UIQT*.so
 %{_libdir}/libADM_render6_QT5.so
-%{_datadir}/applications/avidemux-qt.desktop
-%{_datadir}/icons/avidemux-qt.png
+%{_datadir}/applications/org.avidemux.Avidemux.desktop
+%{_datadir}/icons/hicolor/128x128/apps/org.avidemux.Avidemux.png
 %{_mandir}/man1/avidemux.1.gz
+%{_datadir}/metainfo/org.avidemux.Avidemux.appdata.xml
 # QT plugins
 %{_libdir}/ADM_plugins6/videoEncoders/
 %{_libdir}/ADM_plugins6/videoFilters/qt5/
