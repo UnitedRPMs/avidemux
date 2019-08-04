@@ -224,7 +224,7 @@ find %{buildroot}%{_libdir} -type f -name "*.so.*" -exec chmod 0755 {} \;
 
 %changelog
 
-* Sat Jul 03 2019 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.7.3-9.git176aa02 
+* Sat Aug 03 2019 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.7.3-9.git176aa02 
 - Rebuilt for x265
 
 * Sat Jun 22 2019 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.7.3-8.git176aa02 
