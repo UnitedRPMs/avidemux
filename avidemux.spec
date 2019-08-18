@@ -45,7 +45,6 @@ BuildRequires:  yasm-devel
 BuildRequires:  libxml2-devel >= 2.6.8
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype-devel
-BuildRequires:  js-devel
 BuildRequires:  libXv-devel
 BuildRequires:  libXmu-devel
 BuildRequires:  libsamplerate-devel
