@@ -7,7 +7,7 @@
 
 Name:           avidemux
 Version:        2.7.4
-Release:        8%{?gver}%{?dist}
+Release:        9%{?gver}%{?dist}
 Summary:        Graphical video editing and transcoding tool
 
 License:        GPLv2+
@@ -65,7 +65,7 @@ BuildRequires:	libva-devel
 # Audio Codecs
 BuildRequires:  a52dec-devel >= 0.7.4
 %{?_with_faac:BuildRequires:  faac-devel >= 1.24}
-BuildRequires:  faad2-devel >= 2.0
+BuildRequires:  faad2-devel >= 2.9.1
 BuildRequires:  lame-devel >= 3.96.1
 BuildRequires:  libmad-devel >= 0.15.1
 BuildRequires:  libogg-devel >= 1.1
@@ -222,6 +222,9 @@ find %{buildroot}%{_libdir} -type f -name "*.so.*" -exec chmod 0755 {} \;
 
 
 %changelog
+
+* Sat Nov 09 2019 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.7.4-9.gitd48b500 
+- Rebuilt for faad2
 
 * Thu Sep 05 2019 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.7.4-8.gitd48b500 
 - Rebuilt
