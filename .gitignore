@@ -3,6 +3,7 @@ BUILDROOT/*
 RPMS/*
 SPECS/*
 SRPMS/*
-avidemux*.gz
+*.gz
 /avidemux_2.6.12.tar.gz
 .directory
+*.rpm
