@@ -5,6 +5,8 @@
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 %global gver .git%{shortcommit0}
 
+%define _legacy_common_support 1
+
 Name:           avidemux
 Version:        2.7.4
 Release:        12%{?gver}%{?dist}
@@ -37,7 +39,7 @@ BuildRequires:	ImageMagick-devel
 BuildRequires:	libxslt-devel
 BuildRequires:	dos2unix
 %if 0%{?fedora} >= 29
-BuildRequires:	python-unversioned-command
+Recommends:	python-unversioned-command
 %endif
 
 # Libraries
