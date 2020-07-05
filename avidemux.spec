@@ -9,7 +9,7 @@
 
 Name:           avidemux
 Version:        2.7.4
-Release:        12%{?gver}%{?dist}
+Release:        13%{?gver}%{?dist}
 Summary:        Graphical video editing and transcoding tool
 
 License:        GPLv2+
@@ -82,7 +82,7 @@ BuildRequires:	aften-devel
 
 # Video Codecs
 BuildRequires:  xvidcore-devel >= 1.0.2
-BuildRequires:  x264-devel >= 0.157
+BuildRequires:  x264-devel >= 0.159
 BuildRequires:  x265-devel >= 3.4 
 
 # Main package is a metapackage, bring in something useful.
@@ -224,6 +224,9 @@ find %{buildroot}%{_libdir} -type f -name "*.so.*" -exec chmod 0755 {} \;
 
 
 %changelog
+
+* Sat Jul 04 2020 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.7.4-13.gitd48b500 
+- Rebuilt for x264
 
 * Sat May 30 2020 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.7.4-12.gitd48b500 
 - Rebuilt for x265
