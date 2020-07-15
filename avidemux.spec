@@ -1,20 +1,21 @@
 %global _iconsdir %{_datadir}/icons
 %bcond_without aften
-%global gitdate 20180815
-%global commit0 d48b5004a1e20ad653e4562de783761158c63192
+%global gitdate 20200713
+%global commit0 eb66519c78c7e9efdb67129f3b998cb9fae1217c
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 %global gver .git%{shortcommit0}
 
 %define _legacy_common_support 1
 
 Name:           avidemux
-Version:        2.7.4
-Release:        13%{?gver}%{?dist}
+Version:        2.7.6
+Release:        7%{?gver}%{?dist}
 Summary:        Graphical video editing and transcoding tool
 
 License:        GPLv2+
 URL:            http://www.avidemux.org
 Source0:	https://github.com/mean00/avidemux2/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
+Source1:	https://github.com/mean00/avidemux2_i18n/archive/%{version}.tar.gz
 
 # qt
 BuildRequires:	pkgconfig(Qt5Core)
@@ -144,17 +145,21 @@ Header files for %{name}.
 
 
 %prep
-%autosetup -n %{name}2-%{commit0} -p1
+%autosetup -n %{name}2-%{commit0} -a1
 
 for i in bash cmake cpp sh sql txt; do
   find . -name \*.$i -print0 | xargs -0 dos2unix -q
 done
+
+rm -rf $PWD/avidemux/qt4/i18n/ && mv -f avidemux2_i18n-%{version} $PWD/avidemux/qt4/i18n
+
 
 sed -i 's|../avidemux/qt4|../avidemux/qt4 -DLRELEASE_EXECUTABLE=/usr/bin/lrelease-qt5|' bootStrap.bash
 
 %build
 export CXXFLAGS="%optflags -D__STDC_CONSTANT_MACROS -fno-strict-aliasing"
 chmod 755 bootStrap.bash
+
 
 bash bootStrap.bash \
      --with-core \
@@ -224,6 +229,9 @@ find %{buildroot}%{_libdir} -type f -name "*.so.*" -exec chmod 0755 {} \;
 
 
 %changelog
+
+* Mon Jul 13 2020 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.7.6-7.gitd48b500 
+- Updated to 2.7.6
 
 * Sat Jul 04 2020 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.7.4-13.gitd48b500 
 - Rebuilt for x264
