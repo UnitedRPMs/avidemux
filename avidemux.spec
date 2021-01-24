@@ -1,7 +1,7 @@
 %global _iconsdir %{_datadir}/icons
 %bcond_without aften
 %global gitdate 20200713
-%global commit0 eb66519c78c7e9efdb67129f3b998cb9fae1217c
+%global commit0 32dfeffd4eda13edf848b4262a21d77b0fbad4fd
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 %global gver .git%{shortcommit0}
 
@@ -9,7 +9,7 @@
 
 Name:           avidemux
 Version:        2.7.6
-Release:        7%{?gver}%{?dist}
+Release:        8%{?gver}%{?dist}
 Summary:        Graphical video editing and transcoding tool
 
 License:        GPLv2+
@@ -17,6 +17,11 @@ URL:            http://www.avidemux.org
 Source0:	https://github.com/mean00/avidemux2/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
 Source1:	https://github.com/mean00/avidemux2_i18n/archive/%{version}.tar.gz
 
+Patch:		qt-5.15.diff
+Patch1:		log.diff
+Patch2:		file.patch
+Patch3:		fix_verbose.patch
+Patch4:		add_settings_pluginui_message_error.patch
 # qt
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Gui)
@@ -83,7 +88,7 @@ BuildRequires:	aften-devel
 
 # Video Codecs
 BuildRequires:  xvidcore-devel >= 1.0.2
-BuildRequires:  x264-devel >= 0.159
+BuildRequires:  x264-devel >= 1:0.161
 BuildRequires:  x265-devel >= 3.4 
 
 # Main package is a metapackage, bring in something useful.
@@ -145,7 +150,7 @@ Header files for %{name}.
 
 
 %prep
-%autosetup -n %{name}2-%{commit0} -a1
+%autosetup -n %{name}2-%{commit0} -a1 -p1
 
 for i in bash cmake cpp sh sql txt; do
   find . -name \*.$i -print0 | xargs -0 dos2unix -q
@@ -229,6 +234,9 @@ find %{buildroot}%{_libdir} -type f -name "*.so.*" -exec chmod 0755 {} \;
 
 
 %changelog
+
+* Thu Jan 21 2021 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.7.6-8.git32dfeff 
+- Rebuilt and updated to current commit
 
 * Mon Jul 13 2020 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.7.6-7.gitd48b500 
 - Updated to 2.7.6

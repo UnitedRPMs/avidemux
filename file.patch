@@ -1,0 +1,13 @@
+diff -ruN orig/cmake/ffmpeg_configure.sh.cmake new/cmake/ffmpeg_configure.sh.cmake
+--- orig/cmake/ffmpeg_configure.sh.cmake	2021-01-21 08:20:37.000000000 -0600
++++ new/cmake/ffmpeg_configure.sh.cmake	2021-01-21 23:00:32.220877536 -0600
+@@ -1,2 +1,7 @@
+ export PATH=${FF_ENV_PATH}:$PATH
+-${FFMPEG_SOURCE_DIR}/configure ${FFMPEG_FLAGS}
+\ No hay ningún carácter de nueva línea al final del fichero
++export AR=%{_bindir}/gcc-ar
++export RANLIB=%{_bindir}/gcc-ranlib
++export NM=%{_bindir}/gcc-nm
++
++
++${FFMPEG_SOURCE_DIR}/configure ${FFMPEG_FLAGS} --disable-debug --disable-error-resilience --enable-pic --extra-cflags=-D__STDC_CONSTANT_MACROS 
