@@ -1,21 +1,26 @@
 %global _iconsdir %{_datadir}/icons
 %bcond_without aften
 %global gitdate 20200713
-%global commit0 32dfeffd4eda13edf848b4262a21d77b0fbad4fd
+%global commit0 37c73c4f469529ab9f71e13e800fee69970247ef
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 %global gver .git%{shortcommit0}
+
+# translation files
+%global commit1 8afca8f3ffca50e3e4e7cb5be9563c778fef32e1
+%global shortcommit1 %(c=%{commit1}; echo ${c:0:7})
 
 %define _legacy_common_support 1
 
 Name:           avidemux
-Version:        2.7.6
-Release:        8%{?gver}%{?dist}
+Version:        2.7.7
+Release:        7%{?gver}%{?dist}
 Summary:        Graphical video editing and transcoding tool
 
 License:        GPLv2+
 URL:            http://www.avidemux.org
 Source0:	https://github.com/mean00/avidemux2/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
-Source1:	https://github.com/mean00/avidemux2_i18n/archive/%{version}.tar.gz
+Source1:	https://github.com/mean00/avidemux2_i18n/archive/%{commit1}.zip#/avidemux2_i18n-%{shortcommit1}.tar.gz
+
 
 Patch:		qt-5.15.diff
 Patch1:		log.diff
@@ -151,6 +156,7 @@ Header files for %{name}.
 
 %prep
 %autosetup -n %{name}2-%{commit0} -a1 -p1
+mv -f avidemux2_i18n-%{commit1} avidemux2_i18n-%{version}
 
 for i in bash cmake cpp sh sql txt; do
   find . -name \*.$i -print0 | xargs -0 dos2unix -q
@@ -234,6 +240,9 @@ find %{buildroot}%{_libdir} -type f -name "*.so.*" -exec chmod 0755 {} \;
 
 
 %changelog
+
+* Sat Jan 23 2021 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.7.7-7.git37c73c4
+- Updated to 2.7.7
 
 * Thu Jan 21 2021 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.7.6-8.git32dfeff 
 - Rebuilt and updated to current commit
