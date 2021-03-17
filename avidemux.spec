@@ -1,18 +1,18 @@
 %global _iconsdir %{_datadir}/icons
 %bcond_without aften
 %global gitdate 20200713
-%global commit0 37c73c4f469529ab9f71e13e800fee69970247ef
+%global commit0 0298788c4872990215190e7351c7456f2801daa8
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 %global gver .git%{shortcommit0}
 
 # translation files
-%global commit1 8afca8f3ffca50e3e4e7cb5be9563c778fef32e1
+%global commit1 5543d9240c656062fd04108f15770694c04865ca
 %global shortcommit1 %(c=%{commit1}; echo ${c:0:7})
 
 %define _legacy_common_support 1
 
 Name:           avidemux
-Version:        2.7.7
+Version:        2.7.8
 Release:        7%{?gver}%{?dist}
 Summary:        Graphical video editing and transcoding tool
 
@@ -240,6 +240,9 @@ find %{buildroot}%{_libdir} -type f -name "*.so.*" -exec chmod 0755 {} \;
 
 
 %changelog
+
+* Mon Mar 15 2021 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.7.8-7.git0298788
+- Updated to 2.7.8
 
 * Sat Jan 23 2021 Unitedrpms Project <unitedrpms AT protonmail DOT com> 2.7.7-7.git37c73c4
 - Updated to 2.7.7
